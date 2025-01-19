@@ -6,7 +6,7 @@
     elementFormDefault="qualified"
     attributeFormDefault="unqualified">
 
-    <!-- Includes -->
+    <!-- Includes: se utiliza para incluir esquemas que comparten el mismo targetNamespace -->
     <xs:include schemaLocation="SoapFault.xsd"/>
 
     <!-- Definición del elemento "SoapBody" -->

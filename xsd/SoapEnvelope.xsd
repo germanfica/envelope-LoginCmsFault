@@ -4,7 +4,7 @@
            targetNamespace="http://schemas.xmlsoap.org/soap/envelope/"
            elementFormDefault="qualified">
 
-    <!-- Includes -->
+    <!-- Includes: se utiliza para incluir esquemas que comparten el mismo targetNamespace -->
     <xs:include schemaLocation="SoapBody.xsd"/>
 
     <!-- Definición del elemento principal Envelope -->

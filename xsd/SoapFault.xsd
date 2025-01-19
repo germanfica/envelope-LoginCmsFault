@@ -7,7 +7,7 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <!-- Importación del namespace para elementos de Axis -->
+    <!-- Imports: se utiliza para importar esquemas que tienen un targetNamespace diferente al del esquema principal -->
     <xs:import namespace="http://xml.apache.org/axis/" schemaLocation="FaultDetail.xsd" />
 
     <!-- Elemento raíz opcional que representa la clase SoapFault -->
