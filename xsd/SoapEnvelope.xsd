@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+           targetNamespace="http://schemas.xmlsoap.org/soap/envelope/"
+           elementFormDefault="qualified">
+
+    <!-- Includes -->
+    <xs:include schemaLocation="SoapBody.xsd"/>
+
+    <!-- Definición del elemento principal Envelope -->
+    <xs:element name="Envelope" type="soap:SoapEnvelope"/>
+
+    <!-- Tipo complejo para SoapEnvelope -->
+    <xs:complexType name="SoapEnvelope">
+        <xs:sequence>
+            <!-- Referencia al tipo SoapBody importado -->
+            <xs:element name="Body" type="soap:SoapBody" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
