@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://example.com/germanfica/wsfe"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://example.com/germanfica/wsfe"
+             name="SoapEnvelopeService">
+
+    <!-- Types -->
+    <types>
+        <xsd:schema targetNamespace="http://example.com/germanfica/wsfe">
+            <xsd:element name="Envelope">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Body" type="tns:SoapBody"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:complexType name="SoapBody">
+                <!-- Define aquí los elementos internos del cuerpo SOAP si corresponde -->
+                <xsd:sequence>
+                    <xsd:element name="Content" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+
+    <!-- Message Definitions -->
+    <message name="RequestMessage">
+        <part name="parameters" element="tns:Envelope"/>
+    </message>
+
+    <message name="ResponseMessage">
+        <part name="parameters" element="tns:Envelope"/>
+    </message>
+
+    <!-- PortType -->
+    <portType name="SoapEnvelopePortType">
+        <operation name="ProcessEnvelope">
+            <input message="tns:RequestMessage"/>
+            <output message="tns:ResponseMessage"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="SoapEnvelopeBinding" type="tns:SoapEnvelopePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ProcessEnvelope">
+            <soap:operation soapAction="http://example.com/germanfica/wsfe/ProcessEnvelope"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="SoapEnvelopeService">
+        <port name="SoapEnvelopePort" binding="tns:SoapEnvelopeBinding">
+            <soap:address location="http://localhost:8080/SoapEnvelopeService"/>
+        </port>
+    </service>
+
+</definitions>

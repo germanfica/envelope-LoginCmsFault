@@ -1,0 +1,13 @@
+<jxb:bindings version="3.0"
+    xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    jxb:extensionBindingPrefixes="xjc">
+
+    <jxb:bindings schemaLocation="../xsd/SoapEnvelope.xsd" node="/xs:schema">
+        <!-- Evitar conflictos pero mantener el nombre original -->
+        <jxb:bindings node="xs:element[@name='Envelope']">
+            <jxb:class name="SoapEnvelope"/>
+        </jxb:bindings>
+    </jxb:bindings>
+</jxb:bindings>

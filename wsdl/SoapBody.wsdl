@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://germanfica.com/wsfe/model/soap/envelope"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://germanfica.com/wsfe/model/soap/envelope"
+             name="SoapService">
+
+    <!-- Tipos de datos -->
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://germanfica.com/wsfe/model/soap/envelope">
+            <element name="SoapBody">
+                <complexType>
+                    <sequence>
+                        <element name="Fault" type="tns:SoapFault" minOccurs="0"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <complexType name="SoapFault">
+                <sequence>
+                    <!-- Añade aquí los elementos que forman parte de SoapFault según su definición -->
+                    <element name="faultcode" type="xsd:string"/>
+                    <element name="faultstring" type="xsd:string"/>
+                    <element name="faultactor" type="xsd:string" minOccurs="0"/>
+                    <element name="detail" type="xsd:string" minOccurs="0"/>
+                </sequence>
+            </complexType>
+        </schema>
+    </types>
+
+    <!-- Mensajes -->
+    <message name="SoapRequest">
+        <part name="body" element="tns:SoapBody"/>
+    </message>
+    <message name="SoapResponse">
+        <part name="body" element="tns:SoapBody"/>
+    </message>
+
+    <!-- Port Type -->
+    <portType name="SoapPortType">
+        <operation name="HandleSoapFault">
+            <input message="tns:SoapRequest"/>
+            <output message="tns:SoapResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="SoapBinding" type="tns:SoapPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="HandleSoapFault">
+            <soap:operation soapAction="http://germanfica.com/wsfe/HandleSoapFault"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Servicio -->
+    <service name="SoapService">
+        <port name="SoapPort" binding="tns:SoapBinding">
+            <soap:address location="http://localhost:8080/soapService"/>
+        </port>
+    </service>
+</definitions>
