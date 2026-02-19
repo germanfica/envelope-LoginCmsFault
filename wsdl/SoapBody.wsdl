@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:tns="http://germanfica.com/wsfe/model/soap/envelope"
+             xmlns:tns="http://schemas.xmlsoap.org/soap/envelope/"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-             targetNamespace="http://germanfica.com/wsfe/model/soap/envelope"
+             targetNamespace="http://schemas.xmlsoap.org/soap/envelope/"
              name="SoapService">
 
     <!-- Tipos de datos -->
     <types>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://germanfica.com/wsfe/model/soap/envelope">
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.xmlsoap.org/soap/envelope/">
             <element name="SoapBody">
                 <complexType>
                     <sequence>
@@ -49,7 +49,7 @@
     <binding name="SoapBinding" type="tns:SoapPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="HandleSoapFault">
-            <soap:operation soapAction="http://germanfica.com/wsfe/HandleSoapFault"/>
+            <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/HandleSoapFault"/>
             <input>
                 <soap:body use="literal"/>
             </input>
