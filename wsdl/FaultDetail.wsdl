@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
-             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:tns="http://germanfica.com/wsfe/model/soap/envelope/"
+             xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+             xmlns:tns="http://schemas.xmlsoap.org/soap/envelope/"
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-             targetNamespace="http://germanfica.com/wsfe/model/soap/envelope/">
+             targetNamespace="http://schemas.xmlsoap.org/soap/envelope/">
 
     <types>
-        <xsd:schema targetNamespace="http://germanfica.com/wsfe/model/soap/envelope/">
+        <xsd:schema targetNamespace="http://schemas.xmlsoap.org/soap/envelope/">
             <xsd:element name="FaultDetail">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -32,7 +32,7 @@
     <binding name="FaultDetailBinding" type="tns:FaultDetailPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="GetFaultDetail">
-            <soap:operation soapAction="http://germanfica.com/wsfe/GetFaultDetail"/>
+            <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/GetFaultDetail"/>
             <input>
                 <soap:body use="literal"/>
             </input>
