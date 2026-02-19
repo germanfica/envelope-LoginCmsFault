@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://xml.apache.org/axis/">
+
+  <xs:import namespace="http://xml.apache.org/axis/" schemaLocation="schema1.xsd"/>
+
+  <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="schema2.xsd"/>
+
+  <xs:complexType name="FaultDetail">
+    <xs:sequence>
+      <xs:element ref="ns1:exceptionName" minOccurs="0"/>
+      <xs:element ref="ns1:hostname" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SoapBody">
+    <xs:sequence>
+      <xs:element ref="ns2:Fault" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SoapFault">
+    <xs:sequence>
+      <xs:element name="faultcode" type="xs:string"/>
+      <xs:element name="faultstring" type="xs:string"/>
+      <xs:element name="detail" type="FaultDetail"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SoapEnvelope">
+    <xs:sequence>
+      <xs:element ref="ns2:Body" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

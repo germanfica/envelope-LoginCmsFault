@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://xml.apache.org/axis/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="exceptionName" type="xs:string"/>
+
+  <xs:element name="hostname" type="xs:string"/>
+</xs:schema>
+
